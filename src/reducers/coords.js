@@ -112,6 +112,9 @@ const coordsReducer = (state = coordsReducerDefaultState, action, stateTree) => 
             }
             :
             state
+
+        case 'RESET':
+            return coordsReducerDefaultState
         
         default:
             return state

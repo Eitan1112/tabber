@@ -32,6 +32,10 @@ export const backspace = (coords, rows) => ({
     rows
 })
 
+export const reset = () => ({
+    type: 'RESET'
+})
+
 export const undo = (coords, rows) => ({
     type: 'UNDO',
     coords,
@@ -54,4 +58,9 @@ export const changeSection = (value, rowIndex) => ({
     type: 'CHANGE_SECTION',
     value,
     rowIndex
+})
+
+export const importFile = (content) => ({
+    type: 'IMPORT_FILE',
+    content
 })

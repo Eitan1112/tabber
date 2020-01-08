@@ -35,6 +35,9 @@ export default (state = settingsReducerDefaultState, action) => {
 
         case 'LOAD_TABS':
             return action.settings
+
+        case 'RESET':
+            return settingsReducerDefaultState
             
         default:
             return state

@@ -80,6 +80,9 @@ const rowsReducer = (state = [...rowReducerDefaultState], action, stateTree) => 
                 section: action.value
             }, state.slice(action.rowIndex + 1, state.length))
 
+        case 'RESET':
+            return rowReducerDefaultState
+
         default:
             return state
     }
