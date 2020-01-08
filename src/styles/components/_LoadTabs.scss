@@ -1,0 +1,16 @@
+.load-tabs-list-item {
+    cursor: pointer;
+
+    i {
+        padding: 5px 5px 20px 5px
+    }
+    i:hover {
+        svg {
+            width:15px;
+            height:15px
+        }
+    }
+}
+.load-tabs-list-item:hover {
+    background-color: rgb(230,230,230)
+}

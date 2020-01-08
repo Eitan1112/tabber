@@ -1,0 +1,8 @@
+{
+  "short_name": "Top Guitar",
+  "name": "Top Guitar Tab Writer",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

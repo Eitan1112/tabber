@@ -1,0 +1,13 @@
+.row-section-select {
+    div {
+        border: none !important;
+        background-color: transparent !important;
+        outline: none
+    }
+}
+.ant-select-focused {
+    div:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}
