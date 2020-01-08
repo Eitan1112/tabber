@@ -6,9 +6,11 @@ export default (state, { rowIndex, lineIndex, charIndex }) => {
     // If removes line break => removes two chars
     if ( charIndex > 0 ) {   
         const prevChar = state[rowIndex].lines[lineIndex][charIndex - 1]
-        const atEndOfRow = state[rowIndex].lines[lineIndex].length === charIndex + 1
-        const removeCharsAmount = prevChar === '|' && !atEndOfRow ? 1 : 0
-        return mapStateRow(state, rowIndex, (content) => content.slice(0, charIndex - removeCharsAmount).concat(content.slice(charIndex + 1, content.length)))
+        const removeCharsAmount = prevChar === '|' ? 1 : 0
+        return mapStateRow(state, rowIndex, (content) => content
+        .slice(0, charIndex - removeCharsAmount)
+        .concat(content.slice(charIndex + 1, content.length)))
+        
     } else if (rowIndex > 0) {
         if(state[rowIndex].lines[0].length === 1) {
             return state.slice(0, rowIndex).concat(state.slice(rowIndex + 1, state.length))
@@ -32,7 +34,6 @@ export const backspaceCoordsHelper = ({ rowIndex, lineIndex, charIndex }, stateT
     const atEndOfRow = stateTree.rows[rowIndex].lines[lineIndex].length === charIndex + 1
     const atStartOfRow = charIndex === 1
     const goBackBy = (prevChar === '|' && atEndOfRow) ? 2 : 1
-    console.log(prevChar, atEndOfRow, atStartOfRow)
     if (charIndex > 0) {
         return {
             charIndex: charIndex - goBackBy
