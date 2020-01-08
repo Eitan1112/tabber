@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import { Provider } from 'react-redux';
+import { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import AppRouter from './routers/AppRouter'
 import {firebase} from './firebase/firebase'
@@ -25,9 +26,9 @@ ReactDOM.render(jsx, document.getElementById('root'))
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
         store.dispatch(login(user.uid))
-        // history.push('/tabwriter')
+        history.push('/tabwriter')
     } else {
         store.dispatch(logout())
-        // history.push('/')
+        history.push('/')
     }
 })

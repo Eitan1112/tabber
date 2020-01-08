@@ -10,7 +10,6 @@ export default (state, { rowIndex, lineIndex, charIndex }) => {
         return mapStateRow(state, rowIndex, (content) => content
         .slice(0, charIndex - removeCharsAmount)
         .concat(content.slice(charIndex + 1, content.length)))
-        
     } else if (rowIndex > 0) {
         if(state[rowIndex].lines[0].length === 1) {
             return state.slice(0, rowIndex).concat(state.slice(rowIndex + 1, state.length))
@@ -32,7 +31,6 @@ export const backspaceCoordsHelper = ({ rowIndex, lineIndex, charIndex }, stateT
     // If user deletes entire line => go to upper line        
     const prevChar = stateTree.rows[rowIndex].lines[lineIndex][charIndex - 1]
     const atEndOfRow = stateTree.rows[rowIndex].lines[lineIndex].length === charIndex + 1
-    const atStartOfRow = charIndex === 1
     const goBackBy = (prevChar === '|' && atEndOfRow) ? 2 : 1
     if (charIndex > 0) {
         return {

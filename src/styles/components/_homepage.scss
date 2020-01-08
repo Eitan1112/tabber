@@ -4,5 +4,72 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+
+    h1 {
+        text-align: center;
+        margin-top: 20%;
+        font-size: 50px;
+        font-family: Skarpalt;
+        font-weight: bold;
+    }
+    .homepage-button {
+        text-align: center;
+        margin: auto;
+        display: block;
+        border: none !important;
+        background-color: rgb(30, 30, 30);
+        padding: none;
+        font-size: 18px
+    }
+    .homepage-button:hover {
+        cursor: pointer;
+    }
 }
 
+
+.homepage-button {
+  position: relative;
+  color: white;
+  width: 256px;
+  height: 64px;
+  line-height: 64px;
+  transition: all 0.3s;
+  span {
+    transition: all 0.3s;
+  }
+}
+
+.homepage-button::before, .homepage-button::after {
+  content: '';
+  position: absolute;
+  transition: all 0.3s;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.homepage-button::before {
+	left: 0px;
+	z-index: 1;
+  
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.1, 1);
+}
+
+.homepage-button:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.homepage-button::after {
+  transition: all 0.3s;
+}
+
+.homepage-button:hover::after {
+  transform: scale(1, .1);
+  opacity: 0;
+}
