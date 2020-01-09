@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { Tooltip, message, notification } from 'antd'
+import { Tooltip, message } from 'antd'
 import { goStart, goEnd } from '../actions/coords'
 import { pasteTabs, reset } from '../actions/tabwriter'
 import { saveTabs, startloadTabsNames } from '../actions/crudTabs'
@@ -8,6 +8,9 @@ import { startPlay, stopPlay } from '../actions/play'
 import LoadTabs from './LoadTabs'
 import PasteTabs from './PasteTabs'
 import ImportFile from './ImportFile'
+import handleExportFile from '../utils/handleExportFile'
+import Tutorial from './Tutorial'
+
 
 
 const Buttons = (props) => (
@@ -15,12 +18,15 @@ const Buttons = (props) => (
         <button className="tab-writer-button" onClick={() => props.dispatch(goStart())}>
             <img alt="Go to start" src={require('../styles/img/step-backwards.svg')} />
         </button>
+
         <button className="tab-writer-button" onClick={() => props.player.playing ? props.dispatch(stopPlay()) : props.dispatch(startPlay())}>
             <img alt="Play pause" src={require(`../styles/img/${props.player.playing ? 'pause' : 'play'}.svg`)} />
         </button>
+
         <button className="tab-writer-button" onClick={() => props.dispatch(goEnd())}>
             <img alt="Go to end" src={require('../styles/img/step-forwards.svg')} />
         </button>
+
         {
             !!props.auth.uid && (<span>
                 <Tooltip title="Save" placement="bottom">
@@ -33,6 +39,7 @@ const Buttons = (props) => (
                         <img alt="Save" src={require('../styles/img/save.svg')} />
                     </button>
                 </Tooltip>
+
                 <LoadTabs>
                     <Tooltip title="Load Saved Tabs" placement="bottom">
                         <button className="tab-writer-button" onClick={() => props.dispatch(startloadTabsNames(props.auth.uid))}>
@@ -42,8 +49,8 @@ const Buttons = (props) => (
                 </LoadTabs>
             </span>
             )
-
         }
+
         <PasteTabs pasteTabs={pasteTabs} dispatch={props.dispatch}>
             <Tooltip title="Paste Tabs" placement="bottom">
                 <button className="tab-writer-button">
@@ -52,17 +59,8 @@ const Buttons = (props) => (
             </Tooltip>
         </PasteTabs>
 
-        <Tooltip title="How to Use" placement="bottom">
-            <button onClick={() => {
-                notification.open({
-                    message: 'Welcome to the tutorial!',
-                    description: 'Start by going around using the Arrow keys',
-                    duration: 0
-                })
-            }} className="tab-writer-button">
-                <img alt="How to Use" src={require('../styles/img/information.svg')} />
-            </button>
-        </Tooltip>
+
+        <Tutorial />
 
         <Tooltip title="Reset" placement="bottom">
             <button onClick={() => props.dispatch(reset())} className="tab-writer-button">
@@ -73,10 +71,17 @@ const Buttons = (props) => (
         <ImportFile dispatch={props.dispatch}>
             <Tooltip title="Import" placement="bottom">
                 <button className="tab-writer-button">
-                    <img alt="Import" src={require('../styles/img/reset.svg')} />
+                    <img alt="Import" src={require('../styles/img/import.svg')} />
                 </button>
             </Tooltip>
         </ImportFile>
+
+        
+        <Tooltip title="Export to File" placement="bottom">
+            <button className="tab-writer-button" id="export-file" onClick={() => {handleExportFile(props.rows, props.settings)}}>
+                <img alt="Export to File" src={require('../styles/img/export.svg')} />
+            </button>
+        </Tooltip>
 
     </div>
 )

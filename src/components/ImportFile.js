@@ -18,7 +18,6 @@ class ImportFile extends React.Component {
 
     handleOk = () => {
         if (this.state.tabs !== undefined) {
-            console.log('dispatching', this.state.tabs)
             this.props.dispatch(pasteTabs(this.state.tabs, 'REPLACE'))
             message.success('Imported Successfuly')
         } else {
@@ -40,9 +39,7 @@ class ImportFile extends React.Component {
         this.setState({ tabs })
     }
 
-    handleRemove = () => {
-        this.setState({tabs: undefined})
-    }
+
 
     render() {
         return (
@@ -58,7 +55,7 @@ class ImportFile extends React.Component {
                     <div>
                         <Dragger
                             name="file"
-                            disabled={this.state.tabs !== undefined}
+                            disabled={false}
                             accept=".txt"
                             customRequest={({ file, onSuccess }) => {
                                 setTimeout(() => onSuccess('ok'), 0)
@@ -74,7 +71,6 @@ class ImportFile extends React.Component {
                                 reader.readAsText(info.file.originFileObj);
                             }
                         }}
-                        onRemove={this.handleRemove}
                         >
                             <p className="ant-upload-drag-icon">
                                 <Icon type="inbox" />

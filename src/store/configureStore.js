@@ -1,15 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk'
 import rowsReducer from '../reducers/rows'
 import coordsReducer from '../reducers/coords'
 import pastReducer from '../reducers/past'
 import futureReducer from '../reducers/future'
 import playerReducer from '../reducers/player'
 import settingsReducer from '../reducers/settings'
-import playerMiddleware from '../middleware/player'
-import messagesMiddleware from '../middleware/messages'
 import dictionaryReducer from '../reducers/dictionary'
 import authReducer from '../reducers/auth'
-import thunk from 'redux-thunk'
+import playerMiddleware from '../middleware/player'
 
 const combineReducers = (reducers) => {
     const keys = Object.keys(reducers)
@@ -33,7 +32,7 @@ const configureStore = () => {
         settings: settingsReducer,
         dictionary: dictionaryReducer,
         auth: authReducer
-    }), applyMiddleware(playerMiddleware, messagesMiddleware, thunk))
+    }), applyMiddleware(playerMiddleware, thunk))
 }
 
 export default configureStore

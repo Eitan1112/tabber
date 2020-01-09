@@ -1,4 +1,5 @@
 import database from '../firebase/firebase'
+import { message } from 'antd'
 
 const SaveMessage = (isSaved) => ({
     type: 'SAVE',
@@ -16,16 +17,20 @@ export const saveTabs = (state) => {
         (dispatch) => {
             database.ref(`/users/${state.auth.uid}/tabs`).push(savedObject).then(() => {
                 dispatch(SaveMessage(true))
+                message.success('Saved')
             }).catch((e) => {
                 dispatch(SaveMessage(false))
+                message.success('Failed to Save')
             })
         }
         :
         (dispatch) => {
             database.ref(`/users/${state.auth.uid}/tabs/${state.settings.tabsID}`).set(savedObject).then(() => {
                 dispatch(SaveMessage(true))
+                message.success('Saved')
             }).catch((e) => {
                 dispatch(SaveMessage(false))
+                message.success('Failed to Save')
             })
         }
 

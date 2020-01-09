@@ -82,7 +82,6 @@ const Buttons = (props) => (
             }
         </div>
 
-
         <Input
             placeholder="Name"
             id="tabs-name"
@@ -94,67 +93,6 @@ const Buttons = (props) => (
 
     </div>
 )
-
-
-
-
-
-
-
-
-
-
-
-        /* <button
-        onClick={() => {
-            props.dispatch(goRight())
-        }}>Right</button>
-    <button
-        onClick={ () => { props.dispatch(goLeft()) } } >
-            Left
-    </button>
-    <button
-        onClick={() => {
-            props.dispatch(goDown())
-        }}>Down</button>
-    <button
-        onClick={() => {
-            props.dispatch(goUp())
-        }}>Up</button>
-    {
-        [...Array(10).keys()].map((i) => {
-            return <button
-            onClick={() => { props.dispatch(replaceChar(String(i)))}}
-            key={`char-button-${i}`}
-            >{i}</button>            
-        })
-    }    
-    <button
-        onClick={() => {
-            props.dispatch(backspace())
-        }}>Backspace</button>
-    <button
-        onClick={() => {
-            props.dispatch(downline())
-        }}>Downline</button>
-    <button
-        onClick={() => {
-            props.dispatch(musicBreak())
-        }}>Break</button>
-    <button
-        onClick={() => {
-            props.dispatch(middleSpace())
-        }}>MiddleSpace</button>
-    <button
-        onClick={() => {
-            props.dispatch(splittedDownline())
-        }}>Splitted Downline</button> */
-
-
-
-
-
-
 
 const mapStateToProps = (state) => ({
     coords: state.coords,

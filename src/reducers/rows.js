@@ -27,7 +27,6 @@ const rowsReducer = (state = [...rowReducerDefaultState], action, stateTree) => 
         case 'GO_RIGHT':
             currentRowLength = state[stateTree.coords.rowIndex].lines[stateTree.coords.lineIndex].length
             const nextChar = state[stateTree.coords.rowIndex].lines[stateTree.coords.lineIndex][stateTree.coords.charIndex + 1]
-            console.log(currentRowLength, nextChar, stateTree.coords.charIndex)
             return currentRowLength === stateTree.coords.charIndex + 1 ? 
                 mapStateRow(state, stateTree.coords.rowIndex, (content) => content += '-') 
                 : 
