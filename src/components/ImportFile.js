@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Modal, Icon, Upload, message } from 'antd'
 import { pasteTabs } from '../actions/tabwriter'
 
@@ -85,9 +84,3 @@ class ImportFile extends React.Component {
 }
 
 export default ImportFile
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// export default connect(mapStateToProps)(ImportFile)

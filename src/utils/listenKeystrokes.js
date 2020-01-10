@@ -1,4 +1,4 @@
-import { goRight, goLeft, goUp, goDown } from '../actions/coords'
+import { goRight, goLeft, goUp, goDown, goStart, goEnd, goRowStart, goRowEnd } from '../actions/coords'
 import { replaceChar, downline, middleSpace, musicBreak, splittedDownline, backspace, undo, redo } from '../actions/tabwriter'
 
 export default (e, store) => {
@@ -32,5 +32,13 @@ export default (e, store) => {
         return store.dispatch(undo())
     } else if (e.key === 'y' && e.ctrlKey) {
         return store.dispatch(redo())
+    } else if (e.key === 'PageUp') {
+        return store.dispatch(goStart())
+    } else if (e.key === 'PageDown') {
+        return store.dispatch(goEnd())
+    } else if (e.key === 'End') {
+        return store.dispatch(goRowEnd())
+    } else if (e.key === 'Home') {
+        return store.dispatch(goRowStart())
     }
 } 

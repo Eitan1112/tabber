@@ -60,7 +60,6 @@ const Buttons = (props) => (
         </PasteTabs>
 
 
-        <Tutorial />
 
         <Tooltip title="Reset" placement="bottom">
             <button onClick={() => props.dispatch(reset())} className="tab-writer-button">
@@ -76,12 +75,20 @@ const Buttons = (props) => (
             </Tooltip>
         </ImportFile>
 
-        
+
         <Tooltip title="Export to File" placement="bottom">
-            <button className="tab-writer-button" id="export-file" onClick={() => {handleExportFile(props.rows, props.settings)}}>
+            <button className="tab-writer-button" id="export-file" onClick={() => { handleExportFile(props.rows, props.settings) }}>
                 <img alt="Export to File" src={require('../styles/img/export.svg')} />
             </button>
         </Tooltip>
+
+        <Tutorial>
+            <Tooltip title="Tutorial" placement="bottom">
+                <button className="tab-writer-button">
+                    <img alt="Tutorial" src={require('../styles/img/tutorial.svg')} />
+                </button>
+            </Tooltip>
+        </Tutorial>
 
     </div>
 )

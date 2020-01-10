@@ -27,3 +27,11 @@ export const goUp = (rows) => {
 export const goStart = () => ({
     type: 'GO_START'
 })
+
+export const goRowStart = () => ({
+    type: 'GO_ROW_START'
+})
+
+export const goRowEnd = () => ({
+    type: 'GO_ROW_END'
+})

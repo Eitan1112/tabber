@@ -89,12 +89,33 @@ const coordsReducer = (state = coordsReducerDefaultState, action, stateTree) => 
                 lineIndex:0,
                 charIndex: 0
             }
-        case 'GO_END':
+        case 'GO_END': {
+            const lastLine = stateTree.rows[stateTree.rows.length - 1].lines[0]
+            const lastChar = lastLine[lastLine.length - 1]
+            const decrementLengthBy = lastChar === '|' ?  2 : 1
             return {
                 rowIndex: stateTree.rows.length - 1,
                 lineIndex: 0,
-                charIndex: stateTree.rows[stateTree.rows.length - 1].lines[0].length - 1
+                charIndex: lastLine.length - decrementLengthBy
             }
+        }
+
+        case 'GO_ROW_START':
+            return {
+                ...state,
+                charIndex: 0
+            }
+
+        case 'GO_ROW_END': {
+            const currentLine = stateTree.rows[state.rowIndex].lines[state.lineIndex]
+            const lastChar = currentLine[currentLine.length - 1]
+            const decrementLengthBy = lastChar === '|' ?  2 : 1
+            return {
+                ...state,
+                charIndex: currentLine.length - decrementLengthBy
+            }
+        }
+            
             
         case 'PLAY':
             return {

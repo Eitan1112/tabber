@@ -1,110 +1,58 @@
 import React from 'react'
-import { Tooltip, notification, message } from 'antd'
-import { connect } from 'react-redux'
-import listenKeystrokes from '../utils/listenKeystrokes'
-
+import { Modal } from 'antd'
 
 
 class Tutorial extends React.Component {
-    
-    state = { visible: false, page: 0, prevState: this.props }
-    
 
-    
-    handleStartTutorial = () => {
-        document.getElementById('tab-writer-rows-container').onkeydown = (e) => {
-            this.checkTutorialStage(e)
-        }
-        notification.open({
-            message: 'Tutorial',
-            description: (
-            <div>
-                Go around using the keyboard arrows!
-                <img className="keyboard-animation" src={require('../styles/img/right-arrow.png')}></img>
-            </div>
-            ),
-            duration: 0
-        })
-        document.getElementById('tab-writer-rows-container').focus()
-    }
-    
-    checkTutorialStage = (e) => {
-        switch (this.state.page) {
-            case 0: {
-                this.handleChangePage(1)
-            }
-            case 1: {
-                const validNumbers = '0123456789'
-                if (validNumbers.includes(e.key)) {
-                    this.handleChangePage(1)
-                }
-            }
-        }
+    state = { visible: false}
 
-    }
-    
-    handleChangePage = (goBy) => {
-        this.setState({page: this.state.page + goBy})
-        document.querySelector('.ant-notification-notice-close').click()
-        notification.open({
-            ...this.getPageNotification(this.state.page),
-            duration: 0
-        })
-    }
+    showModal = () => {
+        this.setState({
+            visible: true,
+        });
+    };
 
+    handleOk = () => {
+        this.setState({
+            visible: false,
+        });
 
-    getPageNotification = (newPage) => {
-        switch(newPage) {
-            case 1:
-                return {
-                    message: 'Tutorial',
-                    description: 'Now replace the char using any number key'
-                }
-            case 2:
-                    return {
-                        message: 'Tutorial',
-                        description: 'You can try and '
-                    }        
-            case 3:
-                return {
-                    message: '',
-                    description: ''
-                }
-            case 4:
-                    return {
-                        message: '',
-                        description: ''
-                    }    
-            case 5:
-                return {
-                    message: '',
-                    description: ''
-                }
-            case 6:
-                return {
-                    message: '',
-                    description: ''
-                }                                  
-        }
-    }
-    
+    };
+
+    handleCancel = e => {
+        this.setState({
+            visible: false,
+        });
+    };
+
 
     render() {
         return (
-            <Tooltip title="Tutorial" placement="bottom">
-                <button onClick={this.handleStartTutorial} className="tab-writer-button">
-                    <img alt="Tutorial" src={require('../styles/img/information.svg')} />
-                </button>
-                <button onClick={() => console.log(this.state)}>
-                    Yep
-                </button>
-
-            </Tooltip>
-        )
+            <span>
+                <span onClick={this.showModal}>
+                    {this.props.children}
+                </span>
+                <Modal
+                    title="Tutorial"
+                    visible={this.state.visible}
+                    footer={null}>
+                    <div>
+                        Move Around - Arrow keys <br />
+                        Insert note - Numbers keys<br />
+                        Add new line - Enter<br />
+                        Insert special chars - Corresponding keys (p - pull-off, / - slide up, etc)<br />
+                        Add music break - Space<br />
+                        Add space in the middle of a row - Shift + Space<br />
+                        Undo/Redo - Ctrl + Z/Y<br />
+                        Delete - Backspace<br />
+                        <br />
+                        Notice you can paste tabs, save, load and play them. <br />
+                        
+                    </div>
+                </Modal>
+            </span>
+        );
     }
 }
 
-
-const mapStateToProps = (state) => ({...state})
-
-export default connect(mapStateToProps)(Tutorial)
+export default Tutorial
