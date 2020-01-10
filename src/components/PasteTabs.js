@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Radio, Input } from 'antd'
 
-const { TextArea } = Input;
+const { TextArea } = Input
 
 class PasteTabs extends React.Component {
 
@@ -10,24 +10,24 @@ class PasteTabs extends React.Component {
     showModal = () => {
         this.setState({
             visible: true,
-        });
-    };
+        })
+    }
 
     handleOk = () => {
         const tabs = document.getElementById('paste-tabs-textarea').value
-        const pasteTabs = document.querySelector('input[type="radio"]:checked').value;
+        const pasteTabs = document.querySelector('input[type="radio"]:checked').value
         // console.log(this.props, 'From')
         this.props.dispatch(this.props.pasteTabs(tabs, pasteTabs))
         this.setState({
             visible: false,
-        });
-    };
+        })
+    }
 
     handleCancel = e => {
         this.setState({
             visible: false,
-        });
-    };
+        })
+    }
 
     render() {
         return (
@@ -48,7 +48,7 @@ class PasteTabs extends React.Component {
                     </Radio.Group>
                 </Modal>
             </span>
-        );
+        )
     }
 }
 

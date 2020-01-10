@@ -1,5 +1,5 @@
 export default (rows, settings) => {
-    var element = document.createElement('a');
+    var element = document.createElement('a')
     const name = settings.name !== undefined ? settings.name : 'Unnamed Song'
     console.log(name)
     let content = `${name}\n\nCapo: ${settings.capo}`
@@ -9,13 +9,13 @@ export default (rows, settings) => {
             content += `${settings.tuning[index]}|${line}\n`
         })
     })
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
-    element.setAttribute('download', name);
+    element.setAttribute('href', 'data:text/plaincharset=utf-8,' + encodeURIComponent(content))
+    element.setAttribute('download', name)
 
-    element.style.display = 'none';
-    document.body.appendChild(element);
+    element.style.display = 'none'
+    document.body.appendChild(element)
 
-    element.click();
+    element.click()
 
-    document.body.removeChild(element);
+    document.body.removeChild(element)
 }

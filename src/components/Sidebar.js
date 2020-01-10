@@ -9,7 +9,7 @@ import convertTuning from '../libs/convertTuning'
 const handleChangeTuning = (dispatch) => {
     let tuning = []
     let temp = ''
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0 ; i < 6 ; i++) {
         temp = document.getElementById(`tuning-${i}`).value
         if (temp === '') {
             return

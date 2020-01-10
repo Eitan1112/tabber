@@ -12,8 +12,8 @@ class ImportFile extends React.Component {
     showModal = () => {
         this.setState({
             visible: true,
-        });
-    };
+        })
+    }
 
     handleOk = () => {
         if (this.state.tabs !== undefined) {
@@ -24,15 +24,15 @@ class ImportFile extends React.Component {
         }
         this.setState({
             visible: false,
-        });
+        })
 
-    };
+    }
 
     handleCancel = e => {
         this.setState({
             visible: false,
-        });
-    };
+        })
+    }
 
     handleUploadedFile = tabs => {
         this.setState({ tabs })
@@ -61,13 +61,13 @@ class ImportFile extends React.Component {
                             }
                         }
                         onChange = {(info) => {
-                            const { status } = info.file;
+                            const { status } = info.file
                             if (status !== 'uploading') {
-                                let reader = new FileReader();
+                                let reader = new FileReader()
                                 reader.onload = (e) => {
                                    this.handleUploadedFile(e.target.result)
                                 }
-                                reader.readAsText(info.file.originFileObj);
+                                reader.readAsText(info.file.originFileObj)
                             }
                         }}
                         >
@@ -79,7 +79,7 @@ class ImportFile extends React.Component {
                     </div>
                 </Modal>
             </span>
-        );
+        )
     }
 }
 

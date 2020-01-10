@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rowsReducer from '../reducers/rows'
 import coordsReducer from '../reducers/coords'

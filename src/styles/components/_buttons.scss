@@ -1,5 +1,6 @@
 .tab-writer-top-menu {
     margin-bottom: 5px;
+    border-top: 1px solid $border-color
 }
 
 .tab-writer-button {
@@ -11,11 +12,11 @@
         img {
             width:50px;
             height: 50px;
-            margin: 4px 2px
+            margin: 4px 2px;
         }
         img:hover {
             width: 54px;
             height: 54px;
-            margin: 0px 0px
+            margin: 0px 0px;
         }
 }
