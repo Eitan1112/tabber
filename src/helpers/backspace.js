@@ -1,4 +1,4 @@
-import mapStateRow from "../libs/mapStateRow"
+import mapStateRow from "../libs/mapStateRow";
 
 export default (state, { rowIndex, lineIndex, charIndex }) => {
     // If at start of row => combine the row with the top row

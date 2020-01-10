@@ -1,11 +1,11 @@
 .tab-writer-sidebar {
-    border: 1px solid $border-color;
+    border: 1px solid rgb(217, 217, 217);
     padding: 10px;
     .tab-writer-centered-row {
         display: block;
         margin: auto;
         width:max-content;
-        margin-bottom: 10px;
+        margin-bottom: 10px
     }
     input[type="range"] {
         display: block;
@@ -36,7 +36,7 @@
     }
 
     #capo-range::-webkit-slider-thumb {
-        background-color: green;
+        background-color: green
     }
 
     .tab-writer-sidebar-text {
@@ -51,7 +51,7 @@
         input {
             width: calc((100% - 48px)/6);
             border: none;
-            border-bottom: 2px solid $border-color;
+            border-bottom: 2px solid grey;
             margin: 4px 4px 15px 4px;
             outline: none;
             font-size: 20px;

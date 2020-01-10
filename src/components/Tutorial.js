@@ -9,21 +9,21 @@ class Tutorial extends React.Component {
     showModal = () => {
         this.setState({
             visible: true,
-        })
-    }
+        });
+    };
 
     handleOk = () => {
         this.setState({
             visible: false,
-        })
+        });
 
-    }
+    };
 
     handleCancel = e => {
         this.setState({
             visible: false,
-        })
-    }
+        });
+    };
 
 
     render() {
@@ -51,7 +51,7 @@ class Tutorial extends React.Component {
                     </div>
                 </Modal>
             </span>
-        )
+        );
     }
 }
 

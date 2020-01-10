@@ -2,7 +2,7 @@
     div {
         border: none !important;
         background-color: transparent !important;
-        outline: none;
+        outline: none
     }
 }
 .ant-select-focused {
@@ -10,12 +10,4 @@
         box-shadow: none;
         outline: none;
     }
-}
-
-.row-section-input {
-    width: min-content;
-    background-color: transparent;
-    font-size: 15px;
-    border: none;
-    outline: none;
 }

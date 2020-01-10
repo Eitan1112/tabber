@@ -1,7 +1,7 @@
 .tab-writer-root {
     height: 100%;
     .ant-row {
-        height: calc(100% - 113px);
+        height: calc(100% - 113px)
     }
     .tab-writer-rows-container {
         overflow: auto;
@@ -19,7 +19,7 @@
             border: 1px solid red;
         }
         .played {
-            background-color: #BFD7B5;
+            background-color: #BFD7B5
         }
     }
 }

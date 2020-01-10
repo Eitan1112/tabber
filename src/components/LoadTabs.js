@@ -10,20 +10,20 @@ class Load extends React.Component {
     showModal = () => {
         this.setState({
             visible: true,
-        })
-    }
+        });
+    };
 
     handleOk = () => {
         this.setState({
             visible: false,
-        })
-    }
+        });
+    };
 
     handleCancel = e => {
         this.setState({
             visible: false,
-        })
-    }
+        });
+    };
 
     render() {
         return (
@@ -48,7 +48,7 @@ class Load extends React.Component {
                                     actions={[
                                         <Icon type="delete" key={`remove-${song.id}`} onClick={(event) => {
                                             this.props.dispatch(removeTabs(this.props.auth.uid, song.id))
-                                            event.stopPropagation()
+                                            event.stopPropagation();
                                             this.props.dispatch(startloadTabsNames(this.props.auth.uid))
                                         }} />
                                     ]}
@@ -68,7 +68,7 @@ class Load extends React.Component {
                     </div>
                 </Modal>
             </span>
-        )
+        );
     }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Select, Icon } from 'antd'
+import { Select } from 'antd'
 import Line from './Line'
 import {changeSection} from '../actions/tabwriter'
 
@@ -8,10 +8,6 @@ const {Option} = Select
 
  const Row = (props) => (
     <div className="tab-writer-row">
-
-    {
-        console.log('From rows', props.rows[props.rowIndex].section)
-    }
         <Select 
         className="row-section-select"
         value={props.rows[props.rowIndex].section || 'Section'}

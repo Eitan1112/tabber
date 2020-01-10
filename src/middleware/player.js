@@ -15,7 +15,7 @@ const playColumn = (tuning, capo, charIndex, row) => {
     const nextColumn = mapRow(row, (content) => content[charIndex + 2]).lines
 
     let notes = []
-    for (let i = 0 ; i < currentColumn.length ; i++) {
+    for (let i = 0; i < currentColumn.length; i++) {
         if(!isNaN(parseInt(currentColumn[i]))) { // If the char is a numebr
 
             if(!isNaN(parseInt(nextColumn[i])) && isNaN(parseInt(previousColumn[i]))) { //If there is a number in the next column (two digit note)

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { Tooltip, message, Button, Icon } from 'antd'
+import { Tooltip, message } from 'antd'
 import { goStart, goEnd } from '../actions/coords'
 import { pasteTabs, reset } from '../actions/tabwriter'
 import { saveTabs, startloadTabsNames } from '../actions/crudTabs'
