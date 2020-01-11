@@ -2,6 +2,7 @@ import { play, stopPlay } from '../actions/play'
 import getNote from '../libs/getNote'
 import mapRow from '../libs/mapRow'
 import convertTuning from '../libs/convertTuning'
+import { message } from 'antd'
 
 const playColumn = (tuning, capo, charIndex, row) => {
     // Get current column (while check previous and next column for numbers)
@@ -28,12 +29,14 @@ const playColumn = (tuning, capo, charIndex, row) => {
         }
     }
     for (let note of notes) {
-        console.log(`Playing: ${note}`)
         try {
             document.getElementById(note.toLowerCase()).currentTime = 0
             document.getElementById(note.toLowerCase()).play()
-        } catch {}
+        } catch {
+            return false
+        }
     }
+    return true
 }
 
 
@@ -56,8 +59,12 @@ export default ({ getState, dispatch }) => {
                     return
                 } else {
                     const coords = getState().player.coords
-                    playColumn(tuning, capo, coords.charIndex, state.rows[coords.rowIndex])
-                    dispatch(play())
+                    if(playColumn(tuning, capo, coords.charIndex, state.rows[coords.rowIndex])) {
+                        dispatch(play())
+                    } else {
+                        dispatch(stopPlay())
+                        message.warning('Unable to play tabs')
+                    }
                 }
             }, speed)
 
