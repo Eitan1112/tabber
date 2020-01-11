@@ -2,7 +2,6 @@ import { play, stopPlay } from '../actions/play'
 import getNote from '../libs/getNote'
 import mapRow from '../libs/mapRow'
 import convertTuning from '../libs/convertTuning'
-import { message } from 'antd'
 
 const playColumn = (tuning, capo, charIndex, row) => {
     // Get current column (while check previous and next column for numbers)
