@@ -63,7 +63,17 @@ const newPaste = (state, rowIndex, paste, pasteType) => {
 
   })
 
-  return newState
+  switch (pasteType) {
+    case 'REPLACE':
+      return newState
+    case 'APPEND':
+      return [...state, ...newState]
+    case 'AT_SELECTOR':
+      console.log(state)
+      return state.slice(0, rowIndex + 1).concat(newState, state.slice(rowIndex + 1, state.length))
+    default:
+      return state
+  }
 }
 
 export default newPaste
