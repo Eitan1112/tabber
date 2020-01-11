@@ -15,10 +15,9 @@ const TabWriter = (props) => (
     onLoad={() => { document.getElementById('tab-writer-rows-container').focus() }}>
         <Header />
         <Buttons />
-        <Row>
-            <Col 
+        <div className="tab-writer-rows-sidebar-container">
+            <div 
             tabIndex={0}
-            span={20}
             className="tab-writer-rows-container" 
             id="tab-writer-rows-container"
             
@@ -33,11 +32,11 @@ const TabWriter = (props) => (
             {
                 props.dictionary.isDisplayed && <Dictionary />
             }
-            </Col>
-            <Col span={4}>
+            </div>
+            <div className="tab-writer-sidebar-container">
                 <Sidebar />
-            </Col>
-        </Row>
+            </div>
+        </div>
         <Sound />
                 
     </div>      

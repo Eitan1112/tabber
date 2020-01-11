@@ -5,12 +5,23 @@
     }
     
     label.ant-radio-button-wrapper {
-        width: 33% !important;
+        width: 33.33% !important;
         text-align: center;
     }
     
     .ant-radio-group.ant-radio-group-outline {
         width: 100%;
         margin-top: 20px
+    }
+}
+
+@media (max-width: 513px) {
+    .ant-radio-group {
+        height: 60px;
+    }
+    .ant-radio-button-wrapper {
+        height: 60px !important;
+        top: 0px !important;
+        overflow: hidden;
     }
 }

@@ -25,7 +25,7 @@ const handleChangeTuning = (dispatch) => {
     }
 }
 
-const Buttons = (props) => (
+const Sidebar = (props) => (
     <div className="tab-writer-sidebar">
         
         <div className="tab-writer-centered-row">
@@ -102,5 +102,5 @@ const mapStateToProps = (state) => ({
     player: state.player
 })
 
-export default connect(mapStateToProps)(Buttons)
+export default connect(mapStateToProps)(Sidebar)
 

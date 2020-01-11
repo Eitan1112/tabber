@@ -68,7 +68,7 @@ const Buttons = (props) => (
         </Tooltip>
 
         <ImportFile dispatch={props.dispatch}>
-            <Tooltip title="Import" placement="bottom">
+            <Tooltip title="Import File" placement="bottom">
                 <button className="tab-writer-button">
                     <img alt="Import" src={require('../styles/img/import.svg')} />
                 </button>
@@ -76,7 +76,7 @@ const Buttons = (props) => (
         </ImportFile>
 
 
-        <Tooltip title="Export to File" placement="bottom">
+        <Tooltip title="Export File" placement="bottom">
             <button className="tab-writer-button" id="export-file" onClick={() => { handleExportFile(props.rows, props.settings) }}>
                 <img alt="Export to File" src={require('../styles/img/export.svg')} />
             </button>
@@ -89,6 +89,14 @@ const Buttons = (props) => (
                 </button>
             </Tooltip>
         </Tutorial>
+
+        <button className="tab-writer-button open-sidebar-button"
+        onClick={() => {
+            let display = document.querySelector('.tab-writer-sidebar-container').style.display
+            document.querySelector('.tab-writer-sidebar-container').style.display = display === 'initial' ? 'none' : 'initial'
+        }}>
+            <img alt="Open Sidebar" src={require('../styles/img/settings.svg')} />
+        </button>
 
     </div>
 )

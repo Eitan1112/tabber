@@ -1,15 +1,26 @@
 .tab-writer-root {
     height: 100%;
-    .ant-row {
+    .tab-writer-rows-sidebar-container {
         height: calc(100% - 113px)
     }
+
+    
     .tab-writer-rows-container {
         overflow: auto;
         white-space: nowrap;
         height: 100% !important;
         background-color: #F9F9EA;
         outline: none;
+        display: inline-block;
+        width: calc(100% - 250px);
     }
+
+    .tab-writer-sidebar-container {
+        display:inline-block;
+        width: 250px;
+        position: absolute;
+    }
+
     .tab-writer-row {
         font-family: 'Courier New', Courier, monospace;
         line-height: 17px;
@@ -20,6 +31,22 @@
         }
         .played {
             background-color: #BFD7B5
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .tab-writer-root {
+        .tab-writer-rows-container {
+            width: 100%
+        }
+
+        .tab-writer-sidebar-container {
+            position: fixed;
+            margin: auto;
+            left: 0;
+            right: 0;
+            display: none;
         }
     }
 }

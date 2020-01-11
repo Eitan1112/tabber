@@ -59,3 +59,13 @@
         }
     }
 }
+
+
+@media (max-width: $breakpoint1) {
+    .tab-writer-sidebar-container {
+        background-color: rgb(240, 240, 240)
+    }
+    .tab-writer-tuning-input-wrapper input {
+        background-color: transparent
+    }
+}

@@ -1,6 +1,8 @@
 .tab-writer-top-menu {
     margin-bottom: 5px;
-    border-top: 1px solid $border-color
+    border-top: 1px solid $border-color;
+    overflow: auto;
+    height: 60px;
 }
 
 .tab-writer-button {
@@ -19,4 +21,15 @@
             height: 54px;
             margin: 0px 0px
         }
+}
+
+
+.open-sidebar-button {
+    display: none
+}
+
+@media (max-width: 800px) {
+    .open-sidebar-button {
+        display: inline-block
+    }
 }
