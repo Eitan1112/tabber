@@ -10,7 +10,15 @@ export default (state = playerReducerDefaultState, action, stateTree) => {
     switch(action.type) {
         case 'PLAY':
             const currentRowLength =  stateTree.rows[state.coords.rowIndex].lines[0].length
-            const isAtEndOfRow = currentRowLength === state.coords.charIndex + 1
+            const nextChar = stateTree.rows[state.coords.rowIndex].lines[0][state.coords.charIndex + 1]
+
+            const isAtEndOfRow = nextChar === '|' ? 
+            currentRowLength === state.coords.charIndex + 2 
+            : 
+            currentRowLength === state.coords.charIndex + 1
+
+            const skipBy = (nextChar === '|' && !isAtEndOfRow) ? 2 : 1
+
             return { 
                 ...state,
                 coords: {
@@ -22,7 +30,7 @@ export default (state = playerReducerDefaultState, action, stateTree) => {
                     charIndex: isAtEndOfRow ? // Is the player at end of row
                         0
                         :
-                        state.coords.charIndex + 1
+                        state.coords.charIndex + skipBy
                 },
                 playing: !(isAtEndOfRow && stateTree.rows.length === state.coords.rowIndex + 1)
             }

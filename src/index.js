@@ -26,9 +26,9 @@ ReactDOM.render(jsx, document.getElementById('root'))
 firebase.auth().onAuthStateChanged((user) => {
     if(user) {
         store.dispatch(login(user.uid))
-        history.push('/tabwriter')
+        // history.push('/tabwriter')
     } else {
         store.dispatch(logout())
-        history.push('/')
+        // history.push('/')
     }
 })

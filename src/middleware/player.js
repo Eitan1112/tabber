@@ -67,8 +67,6 @@ export default ({ getState, dispatch }) => {
                     }
                 }
             }, speed)
-
-
         }
     }
 }
