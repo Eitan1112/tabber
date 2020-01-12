@@ -1,5 +1,4 @@
 import React from 'react'
-import { Row, Col } from 'antd'
 import Buttons from './Buttons'
 import TabWriterRow from './Row'
 import { connect } from 'react-redux'

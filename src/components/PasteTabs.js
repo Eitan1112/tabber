@@ -44,7 +44,7 @@ class PasteTabs extends React.Component {
                     <Radio.Group defaultValue="REPLACE">
                     <Radio.Button value="REPLACE">Paste & Replace</Radio.Button>
                     <Radio.Button value="APPEND">Paste to End</Radio.Button>
-                    <Radio.Button value="AT_SELECTOE">Paste after Selector</Radio.Button>
+                    <Radio.Button value="AT_SELECTOR">Paste after Selector</Radio.Button>
                     </Radio.Group>
                 </Modal>
             </span>
