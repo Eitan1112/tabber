@@ -47,6 +47,7 @@ const {Option} = Select
                 key={String(props.rowIndex) + String(i)} />
             })
         }
+        <input className="lyrics-input" placeholder="Click to add lyrics" />
         <br />
     </div>
 )
