@@ -2,18 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Select } from 'antd'
 import Line from './Line'
-import {changeSection} from '../actions/tabwriter'
+import { changeSection, changeLyrics } from '../actions/tabwriter'
 
-const {Option} = Select
+const { Option } = Select
 
- const Row = (props) => (
+const Row = (props) => (
     <div className="tab-writer-row">
-        <Select 
-        className="row-section-select"
-        value={props.rows[props.rowIndex].section || 'Section'}
-        onChange={(value) => {
-            props.dispatch(changeSection(value, props.rowIndex))
-        }}>
+        <Select
+            className="row-section-select"
+            value={props.rows[props.rowIndex].section || 'Section'}
+            onChange={(value) => {
+                props.dispatch(changeSection(value, props.rowIndex))
+            }}>
             <Option value='Section'>
                 [Section]
             </Option>
@@ -42,12 +42,23 @@ const {Option} = Select
         {
             [...Array(6).keys()].map((i) => {
                 return <Line
-                rowIndex={props.rowIndex}
-                lineIndex={i}
-                key={String(props.rowIndex) + String(i)} />
+                    rowIndex={props.rowIndex}
+                    lineIndex={i}
+                    key={String(props.rowIndex) + String(i)} />
             })
         }
-        <input className="lyrics-input" placeholder="Click to add lyrics" />
+        <input 
+        className="lyrics-input" 
+        id={`lyrics-input-${props.rowIndex}`} 
+        placeholder="Click to add lyrics"
+        value={props.rows[props.rowIndex].lyrics || ''}
+        style={{width: props.rows[props.rowIndex].lyrics ? props.rows[props.rowIndex].lyrics.length * 8.5 : 150}}
+        onChange={() => {
+            const element = document.getElementById(`lyrics-input-${props.rowIndex}`)
+            element.style.width = element.value.length * 8.5 > 150 ? element.value.length * 8.5 + 'px' : '150px'
+            return props.dispatch(changeLyrics(element.value, props.rowIndex))
+        }}
+         />
         <br />
         <br />
     </div>
