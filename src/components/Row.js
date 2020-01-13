@@ -49,6 +49,7 @@ const {Option} = Select
         }
         <input className="lyrics-input" placeholder="Click to add lyrics" />
         <br />
+        <br />
     </div>
 )
 
