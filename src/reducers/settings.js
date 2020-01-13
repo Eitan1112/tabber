@@ -4,7 +4,8 @@ const settingsReducerDefaultState = {
     speed: 80,
     capo: 0,
     tuning: ['E','B','G','D','A','E'],
-    name: undefined
+    name: undefined,
+    visible_lyrics: true
 }
 
 export default (state = settingsReducerDefaultState, action) => {
@@ -35,6 +36,12 @@ export default (state = settingsReducerDefaultState, action) => {
 
         case 'LOAD_TABS':
             return action.settings
+
+        case 'TOGGLE_LYRICS':
+            return {
+                ...state,
+                visible_lyrics: !state.visible_lyrics
+            }
 
         case 'RESET':
             return settingsReducerDefaultState

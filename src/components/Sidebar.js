@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { Input, message } from 'antd'
-import { undo, redo,  } from '../actions/tabwriter'
+import { Input, message, Switch } from 'antd'
+import { undo, redo, toggleLyrics } from '../actions/tabwriter'
 import { changeSpeed, changeCapo, changeTuning, changeName } from '../actions/settings'
 import convertTuning from '../libs/convertTuning'
 
@@ -27,7 +27,7 @@ const handleChangeTuning = (dispatch, index) => {
 
 const Sidebar = (props) => (
     <div className="tab-writer-sidebar">
-        
+
         <div className="tab-writer-centered-row">
             <button className="tab-writer-button" onClick={() => { props.dispatch(undo()) }}>
                 <img alt="Go to end" src={require('../styles/img/undo.svg')} />
@@ -81,15 +81,21 @@ const Sidebar = (props) => (
                 ))
             }
         </div>
+        
+        <div className="sidebar-switch">
+            <Switch defaultChecked onChange={() => props.dispatch(toggleLyrics())} />
+            <span>Toggle Lyrics</span>
+        </div>
 
         <Input
             placeholder="Name"
             id="tabs-name"
             value={props.settings.name}
-            onChange={() => {   
+            onChange={() => {
                 const name = document.getElementById('tabs-name').value
                 props.dispatch(changeName(name))
             }} />
+
 
     </div>
 )

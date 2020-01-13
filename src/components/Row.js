@@ -47,26 +47,35 @@ const Row = (props) => (
                     key={String(props.rowIndex) + String(i)} />
             })
         }
-        <input 
-        className="lyrics-input" 
-        id={`lyrics-input-${props.rowIndex}`} 
-        placeholder="Click to add lyrics"
-        value={props.rows[props.rowIndex].lyrics || ''}
-        style={{width: props.rows[props.rowIndex].lyrics ? props.rows[props.rowIndex].lyrics.length * 8.5 : 150}}
-        onChange={() => {
-            const element = document.getElementById(`lyrics-input-${props.rowIndex}`)
-            element.style.width = element.value.length * 8.5 > 150 ? element.value.length * 8.5 + 'px' : '150px'
-            return props.dispatch(changeLyrics(element.value, props.rowIndex))
-        }}
-         />
+        {
+            console.log(props)
+        }       
+        {
+            props.visible_lyrics &&
+            <input 
+            className="lyrics-input" 
+            id={`lyrics-input-${props.rowIndex}`} 
+            placeholder="Click to add lyrics"
+            value={props.rows[props.rowIndex].lyrics || ''}
+            style={{width: props.rows[props.rowIndex].lyrics ? props.rows[props.rowIndex].lyrics.length * 8.5 : 150}}
+            onChange={() => {
+                const element = document.getElementById(`lyrics-input-${props.rowIndex}`)
+                element.style.width = element.value.length * 8.5 > 150 ? element.value.length * 8.5 + 'px' : '150px'
+                return props.dispatch(changeLyrics(element.value, props.rowIndex))
+            }}
+             />
+        }
         <br />
         <br />
     </div>
 )
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => {
+    return    ({
     coords: state.coords,
-    rows: state.rows
+    rows: state.rows,
+    visible_lyrics: state.settings.visible_lyrics
 })
+}
 
 export default connect(mapStateToProps)(Row)

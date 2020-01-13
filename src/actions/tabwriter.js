@@ -70,3 +70,7 @@ export const changeLyrics = (lyrics, rowIndex) => ({
     lyrics,
     rowIndex
 })
+
+export const toggleLyrics = () => ({
+    type: 'TOGGLE_LYRICS'
+})
