@@ -6,8 +6,8 @@ export default () => (
   <div className="homepage-root">
     <Header />
     <h1>Tab Writing Platform</h1>
-      <div onClick={() => history.push('/tabwriter')} className="homepage-button">
-        <span>Let's Go</span>
-      </div>
+    <div onClick={() => history.push('/tabwriter')} className="homepage-button">
+      <span>Let's Go</span>
+    </div>
   </div>
 )

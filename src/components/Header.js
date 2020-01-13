@@ -29,11 +29,11 @@ const Header = (props) => (
                     Sign Out
                 </div>
                 :
-                <div onClick={() => {
-                    props.dispatch(startLogin())
-                }}>
+                <NavLink
+                exact={true}
+                to="/login">
                     Login
-                </div>
+                </NavLink>
             }
         </Menu.Item>
     </Menu>
