@@ -13,7 +13,7 @@ const dictionaryObject = {
 }
 
 const Dictionary = (props) => (
-    <div class="dictionary">
+    <div className="dictionary">
         <div>**********</div>
         {
             Object.keys(props.dictionary.amount).map((key) => (

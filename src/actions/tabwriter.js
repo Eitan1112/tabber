@@ -54,13 +54,23 @@ export const pasteTabs = (tabs, pasteType) => ({
     pasteType
 })
 
-export const changeSection = (value, rowIndex) => ({
+export const changeSection = (section, rowIndex) => ({
     type: 'CHANGE_SECTION',
-    value,
+    section,
     rowIndex
 })
 
 export const importFile = (content) => ({
     type: 'IMPORT_FILE',
     content
+})
+
+export const changeLyrics = (lyrics, rowIndex) => ({
+    type: 'CHANGE_LYRICS',
+    lyrics,
+    rowIndex
+})
+
+export const toggleLyrics = () => ({
+    type: 'TOGGLE_LYRICS'
 })

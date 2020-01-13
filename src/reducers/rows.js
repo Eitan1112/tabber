@@ -76,7 +76,13 @@ const rowsReducer = (state = [...rowReducerDefaultState], action, stateTree) => 
         case 'CHANGE_SECTION':
             return state.slice(0, action.rowIndex).concat({
                 ...state[action.rowIndex],
-                section: action.value
+                section: action.section
+            }, state.slice(action.rowIndex + 1, state.length))
+
+        case 'CHANGE_LYRICS':
+            return state.slice(0, action.rowIndex).concat({
+                ...state[action.rowIndex],
+                lyrics: action.lyrics
             }, state.slice(action.rowIndex + 1, state.length))
 
         case 'RESET':
