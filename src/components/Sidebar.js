@@ -6,7 +6,7 @@ import { changeSpeed, changeCapo, changeTuning, changeName } from '../actions/se
 import convertTuning from '../libs/convertTuning'
 
 
-const handleChangeTuning = (dispatch) => {
+const handleChangeTuning = (dispatch, index) => {
     let tuning = []
     let temp = ''
     for (let i = 0; i < 6; i++) {
@@ -77,7 +77,7 @@ const Sidebar = (props) => (
                         id={`tuning-${index}`}
                         key={`tune-${tuneObject}-${index}`}
                         defaultValue={tuneObject}
-                        onChange={() => handleChangeTuning(props.dispatch)} />
+                        onChange={() => handleChangeTuning(props.dispatch, index)} />
                 ))
             }
         </div>
@@ -86,7 +86,7 @@ const Sidebar = (props) => (
             placeholder="Name"
             id="tabs-name"
             value={props.settings.name}
-            onChange={() => {
+            onChange={() => {   
                 const name = document.getElementById('tabs-name').value
                 props.dispatch(changeName(name))
             }} />
