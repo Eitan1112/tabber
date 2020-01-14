@@ -49,12 +49,12 @@
 
     .tab-writer-tuning-input-wrapper {
         input {
-            width: calc((100% - 48px)/6);
+            width: 27px;
             border: none;
             border-bottom: 2px solid grey;
             margin: 4px 4px 15px 4px;
             outline: none;
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
         }
     }
@@ -67,6 +67,10 @@
             font-size: 18px;
             margin-left: 10px
         }
+    }
+
+    .tuning-arrows {
+        padding: 0px 5px;
     }
 }
 

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import React from 'react'
-import { Input, message, Switch } from 'antd'
+import { Input, message, Switch, Icon, Button } from 'antd'
 import { undo, redo, toggleLyrics } from '../actions/tabwriter'
 import { changeSpeed, changeCapo, changeTuning, changeName } from '../actions/settings'
-import convertTuning from '../libs/convertTuning'
+import convertTuning, { convertNote } from '../libs/convertTuning'
 
 
 const handleChangeTuning = (dispatch, index) => {
@@ -23,6 +23,29 @@ const handleChangeTuning = (dispatch, index) => {
     } catch (e) {
         message.error('Invalid Tuning')
     }
+}
+
+const handleChangeAllTunings = (dispatch, changeBy) => {   
+
+    const order = ['E', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'C', 'Cm', 'D', 'Dm', 'E']    
+    let tuning = []
+    let temp = ''
+    for (let i = 0; i < 6; i++) {
+        temp = document.getElementById(`tuning-${i}`).value
+        if (temp === '') {
+            return
+        }
+        try {
+            const convertedNote = convertNote(temp)
+            const noteIndex = changeBy > 0 ? order.indexOf(convertedNote) : order.lastIndexOf(convertedNote)
+            const newNote = order[noteIndex + changeBy]
+            tuning.push(newNote)
+        } catch { 
+            message.error('Invalid Tuning')
+        }
+    }
+    dispatch(changeTuning(tuning))
+    message.success('Changed Tuning')
 }
 
 const Sidebar = (props) => (
@@ -69,6 +92,9 @@ const Sidebar = (props) => (
 
 
         <div className="tab-writer-tuning-input-wrapper" >
+            <Button className="tuning-arrows" onClick={() => handleChangeAllTunings(props.dispatch, -1)}>
+                <Icon type="caret-left" />
+            </Button>
             {
                 props.settings.tuning.map((tuneObject, index) => (
                     <input
@@ -80,6 +106,9 @@ const Sidebar = (props) => (
                         onChange={() => handleChangeTuning(props.dispatch, index)} />
                 ))
             }
+            <Button className="tuning-arrows" onClick={() => handleChangeAllTunings(props.dispatch, +1)}>
+                <Icon type="caret-right" />
+            </Button>
         </div>
         
         <div className="sidebar-switch">
