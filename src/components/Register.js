@@ -53,7 +53,7 @@ class Register extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="register-form-button">
+                    <Button type="primary" htmlType="submit" className="login-form-button">
                         Sign Up
             </Button>
                 </Form.Item>
