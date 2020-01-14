@@ -14,8 +14,6 @@ class NormalLoginForm extends React.Component {
         firebase.auth().signInWithEmailAndPassword(values.email, values.password).then(() => {
           message.success('Login succesful')
         }).catch(function(error) {
-          var errorCode = error.code;
-          var errorMessage = error.message;
           message.error('Unable to log you in')
         });
       }
@@ -56,7 +54,7 @@ class NormalLoginForm extends React.Component {
             valuePropName: 'checked',
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
-          <a className="login-form-forgot" href="">
+          <a className="login-form-forgot" href="#">
             Forgot password
           </a>
           <Button type="primary" htmlType="submit" className="login-form-button">

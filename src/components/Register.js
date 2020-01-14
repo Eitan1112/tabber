@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import { firebase } from '../firebase/firebase'
 import Header from './Header'
 

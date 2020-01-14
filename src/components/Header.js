@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu } from 'antd'
-import { startLogout, startLogin } from '../actions/auth'
+import { startLogout } from '../actions/auth'
 
 // const handleIsActive = (match, location, to) => {
 //     const selected = document.querySelector('.ant-menu-item-selected')
