@@ -15,10 +15,15 @@
     }
 
     a:hover {
-        border-bottom: 2px solid $menu-active-color;
+        // border-bottom: 2px solid $menu-active-color;
+        background-color: rgb(250, 250, 250)
     }
 
     .active-menu-item {
         border-bottom: 2px solid $menu-active-color;
+    }
+    
+    .logo {
+        height: $navbar-height;
     }
 }

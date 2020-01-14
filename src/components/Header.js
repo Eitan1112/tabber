@@ -2,31 +2,18 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu } from 'antd'
+import logo from '../styles/img/logo.svg'
 import { startLogout } from '../actions/auth'
 
-// const handleIsActive = (match, location, to) => {
-//     const selected = document.querySelector('.ant-menu-item-selected')
-//     console.log(match, location, selected)
-//     if (selected !== null) {
-//         if (location.pathname === to) { // At location
-            
-//         } else if () { // Not at location
-
-//         }
-//     } else { 
-//         // Check location
-//         // highlight it
-//     }
-// }
+console.log(logo)
 
 const Header = (props) => (
     <Menu mode="horizontal" className="menu">
         <Menu.Item key="home-menu-item">                 
             <NavLink
             exact={true} 
-            activeClassName="active-menu-item"
             to="/">               
-                Home
+                <img alt="Logo" src={logo} className="logo" />
             </NavLink>
         </Menu.Item>
         <Menu.Item key="tab-writer-menu-item" id="tab-writer-menu-item">
@@ -40,11 +27,11 @@ const Header = (props) => (
         <Menu.Item key="login-logout-menu-item">
             {
                 props.loggedIn ? 
-                <div onClick={() => {
+                <a onClick={() => {
                     props.dispatch(startLogout())
                 }}>
                     Sign Out
-                </div>
+                </a>
                 :
                 <NavLink
                 exact={true}
