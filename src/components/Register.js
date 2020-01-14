@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import { firebase } from '../firebase/firebase'
 import Header from './Header'
 
@@ -53,7 +53,7 @@ class Register extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="register-form-button">
+                    <Button type="primary" htmlType="submit" className="login-form-button">
                         Sign Up
             </Button>
                 </Form.Item>

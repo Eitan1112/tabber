@@ -1,9 +1,4 @@
-// tuning = ['E', 'B', 'G', 'D', 'A', 'E']
-// tuning = ['E#', 'B', 'G', 'D', 'A', 'E']
-// tuning = ['E', 'Bb', 'G', 'D', 'A', 'E']
-// tuning = ['E', 'B', 'G', 'D', 'Am', 'E']
-
-const convertNote = (note) => {
+export const convertNote = (note) => {
     const order = ['E', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'C', 'Cm', 'D', 'Dm', 'E']
 
     note = note.trim()

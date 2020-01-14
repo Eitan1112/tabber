@@ -51,6 +51,7 @@ export default (state = dictionaryReducerDefaultState, action, stateTree) => {
         }
 
         case 'BACKSPACE': {
+            // eslint-disable-next-line
             const { rowIndex, lineIndex, charIndex} = stateTree.coords
             let newState = {...state}
             const dictionaryChars = '\\/hpr~xtv'
