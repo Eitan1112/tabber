@@ -61,7 +61,7 @@ class NormalLoginForm extends React.Component {
             Log in
           </Button>
           <Button className="google-login"  onClick={() => this.props.dispatch(startLogin())}>
-            <img className="custom-icon" src={require('../styles/img/google.svg')}/>
+            <img alt="google icon" className="custom-icon" src={require('../styles/img/google.svg')}/>
             Sign in with Google
           </Button>
           Or <Link to='/register'>register now!</Link>

@@ -27,11 +27,11 @@ const Header = (props) => (
         <Menu.Item key="login-logout-menu-item">
             {
                 props.loggedIn ? 
-                <a onClick={() => {
+                <span onClick={() => {
                     props.dispatch(startLogout())
                 }}>
                     Sign Out
-                </a>
+                </span>
                 :
                 <NavLink
                 exact={true}
