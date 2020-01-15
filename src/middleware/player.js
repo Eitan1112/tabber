@@ -46,7 +46,7 @@ export default ({ getState, dispatch }) => {
         if(action.type === 'START_PLAY') {
 
             let state = getState()
-            const speed = 7000 / (state.settings.speed * 2) // Min 700 Max 35 => 1 - 200 
+            const speed = 7000 / (state.settings.speed * 2.5) // Min 700 Max 35 => 1 - 200 
             const tuning = convertTuning(state.settings.tuning)
             const capo = state.settings.capo
 
