@@ -1,4 +1,4 @@
-export const replaceChar = (char, coords) => ({
+export const replaceChar = (char = '1', coords) => ({
     type: 'REPLACE_CHAR',
     char,
     coords
