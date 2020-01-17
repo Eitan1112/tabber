@@ -1,5 +1,5 @@
 import { goRight } from '../actions/coords' 
-import { musicBreak, replaceChar } from '../actions/tabwriter'
+import { musicBreak, replaceChar, backspace } from '../actions/tabwriter'
 
 export default (page) => {
         switch (page) {
@@ -9,7 +9,7 @@ export default (page) => {
                     top: 170,
                     width: 110,
                     height: 80,
-                    text: 'Hit the arrows to move around!',
+                    text: 'Hit the arrows to move around',
                     dispatch: [goRight, goRight]
                 }
             case 2:
@@ -18,8 +18,8 @@ export default (page) => {
                     top: 70,
                     width: 344,
                     height: 40,
-                    text: 'Hit any number to insert it!',
-                    dispatch: [replaceChar]
+                    text: 'Hit any number to insert it',
+                    dispatch: [replaceChar, goRight]
                 }
             case 3:
                 return {
@@ -27,12 +27,17 @@ export default (page) => {
                     top: 205,
                     width: 220,
                     height: 40,
-                    text: 'Hit space to add a music break!',
+                    text: 'Hit space to add a music break',
                     dispatch: [musicBreak]
                 }
             case 4:
                 return {
-
+                    left: 460,
+                    top: 70,
+                    width: 70,
+                    height: 40,
+                    text: 'Hit backspace to delete the coulumn.',
+                    dispatch: [backspace]
                 }
             default:
                 return

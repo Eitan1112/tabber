@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from 'antd'
+import { Modal, Button } from 'antd'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import getPageInfo from '../libs/getTutorialPage'
@@ -86,6 +86,10 @@ class Tutorial extends React.Component {
         this.handleChangePage()
     };
 
+    componentWillUpdate() {
+        console.log(this.state)
+    }
+
     handleChangePage = (goBy = 1) => {
         try {
             const page = typeof goBy === 'number' ? this.state.page + goBy : this.state.page + 1
@@ -117,10 +121,17 @@ class Tutorial extends React.Component {
                 <Modal
                     title="Tutorial"
                     visible={this.state.visible}
-                    okText={this.state.started ? 'Next' : 'Yes'}
-                    onOk={this.state.started ? this.handleChangePage : this.handleStartTutorial}
-                    cancelText={this.state.started ? 'Previous' : 'No'}
-                    onCancel={this.state.started ? () => this.handleChangePage(-1) : this.handleCancel}
+                    onCancel={this.handleCancel}
+                    footer={(
+                        <div>
+                        <Button className="tutorial-button ant-button" onClick={this.state.started ? () => this.handleChangePage(-1) : this.handleCancel}>
+                        {this.state.started ? 'Previous' : 'No'}
+                        </Button>
+                            <Button className="tutorial-button ant-button" onClick={this.state.started ? this.handleChangePage : this.handleStartTutorial}>
+                            {this.state.started ? 'Next' : 'Yes'}
+                            </Button>
+                        </div>
+                    )}
                     width="300px">
                     <div>
                         <span id="tutorial-text">
@@ -129,7 +140,7 @@ class Tutorial extends React.Component {
                     </div>
                 </Modal>
             </span>
-        );
+        )
     }
 }
 
