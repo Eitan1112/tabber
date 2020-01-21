@@ -20,6 +20,7 @@ const Keyboard = (props) => {
 class Tutorial extends React.Component {
     constructor(props) {
         super(props);
+        this.toggleModal = this.toggleModal.bind(this)
         this.state = {
             visible: false,
             page: undefined,
@@ -33,10 +34,12 @@ class Tutorial extends React.Component {
             this.props.dispatch(reset())
             this.setState({
                 visible: !this.state.visible,
+            })
+            setTimeout(() => this.setState({
                 page: undefined,
                 styles: undefined,
                 text: undefined
-            })
+            }), 750)
         } else { // Opening
             this.setState({
                 visible: !this.state.visible,
@@ -80,13 +83,13 @@ class Tutorial extends React.Component {
         return (
             <span>
                 {
-                    this.state.page < pages && <Keyboard styles={this.state.styles} />
+                    (this.state.page < pages && this.state.visible) && <Keyboard styles={this.state.styles} />
                 }
                 <span onClick={this.toggleModal}>
                     {this.props.children}
                 </span>
                 <Modal
-                    title="Tutorial"
+                    title={`Tutorial ${this.state.page}/${pages}`}
                     visible={this.state.visible}
                     onCancel={this.toggleModal}
                     footer={(

@@ -106,7 +106,7 @@ export default (page) => {
                     position: 'fixed',
                     backgroundColor,
                     left: 75,
-                    top: 45,
+                    top: 50,
                     width: 60,
                     height: 55,
                 }, { display: 'none' }],
@@ -118,12 +118,117 @@ export default (page) => {
                 styles: [{
                     position: 'fixed',
                     backgroundColor: backgroundColor,
-                    left: 200,
-                    top: 45,
+                    left: 215,
+                    top: 50,
                     width: 60,
                     height: 55,
                 }, { display: 'none' }],
-                text: 'Paste tabs from anywhere!',
+                text: 'Save your tabs.',
+                dispatch: []
+            }
+        case 10:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    left: 285,
+                    top: 50,
+                    width: 60,
+                    height: 55,
+                }, { display: 'none' }],
+                text: 'Load  saved tabs.',
+                dispatch: []
+            }
+        case 11:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    left: 355,
+                    top: 50,
+                    width: 60,
+                    height: 55,
+                }, { display: 'none' }],
+                text: 'Paste tabs from anywhere.',
+                dispatch: []
+            }
+        case 12:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    left: 495,
+                    top: 50,
+                    width: 130,
+                    height: 55,
+                }, { display: 'none' }],
+                text: 'Import and Export tab files.',
+                dispatch: []
+            }
+        case 13:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    right: 20,
+                    top: 180,
+                    width: 250,
+                    height: 60,
+                }, { display: 'none' }],
+                text: 'Change the playing speed',
+                dispatch: []
+            }
+        case 14:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    right: 20,
+                    top: 240,
+                    width: 250,
+                    height: 60,
+                }, { display: 'none' }],
+                text: 'Change capo.',
+                dispatch: []
+            }
+        case 15:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    right: 5,
+                    top: 295,
+                    width: 280,
+                    height: 60,
+                    zIndex: 20
+                }, { display: 'none' }],
+                text: 'Change tuning.',
+                dispatch: []
+            }
+        case 16:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    right: 35,
+                    top: 355,
+                    width: 220,
+                    height: 50,
+                }, { display: 'none' }],
+                text: 'Show or hide lyrics.',
+                dispatch: []
+            }
+        case 17:
+            return {
+                styles: [{
+                    position: 'fixed',
+                    backgroundColor: backgroundColor,
+                    right: 5,
+                    top: 400,
+                    width: 280,
+                    height: 60,
+                }, { display: 'none' }],
+                text: 'Insert song name.',
                 dispatch: []
             }
         default:
@@ -141,4 +246,4 @@ export default (page) => {
     }
 }
 
-export const pages = 10
+export const pages = 18
