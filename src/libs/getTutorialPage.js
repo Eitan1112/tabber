@@ -1,5 +1,6 @@
+import React from 'react'
 import { goRight } from '../actions/coords' 
-import { musicBreak, replaceChar, backspace } from '../actions/tabwriter'
+import { musicBreak, replaceChar, backspace, downline } from '../actions/tabwriter'
 
 export default (page) => {
         switch (page) {
@@ -36,11 +37,27 @@ export default (page) => {
                     top: 70,
                     width: 70,
                     height: 40,
-                    text: 'Hit backspace to delete the coulumn.',
+                    text: 'Hit backspace to delete',
                     dispatch: [backspace]
                 }
+            case 5:
+                return {
+                    left: 475,
+                    top: 100,
+                    width: 60,
+                    height: 80,
+                    text: 'Hit enter to add another line',
+                    dispatch: [downline]
+                }
             default:
-                return
+                return {
+                    left: 0,
+                    top: 0,
+                    width: 0,
+                    height: 0,
+                    text: 'You finished the tutorial!<br />Do you want to sign up in order to save your songs?',
+                    dispatch: []
+                }
 
         }
     }

@@ -29,15 +29,25 @@
 
 }
 
+.ant-modal-footer {
+    padding: 0px !important;
+}
 
 .tutorial-button {
-    width: 48%;
+    width: 50%;
     height: 100%;
-    background-color: blue;
-    border: none;
-    border-radius: 10px;
-    display: inline-block;
-    position: relative;
-    white-space: nowrap;
+    margin: 0px !important;
+    padding: 15px;
+    font-size: 16px;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
 
+.tutorial-button-yes {
+    background-color: #7EBDC2;
+}
+
+.tutorial-button-no {
+    background-color: rgb(254,112,130);
 }

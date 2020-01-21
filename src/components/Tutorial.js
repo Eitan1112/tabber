@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, Button } from 'antd'
+import { Modal, Button, Icon } from 'antd'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
 import getPageInfo from '../libs/getTutorialPage'
@@ -124,12 +124,17 @@ class Tutorial extends React.Component {
                     onCancel={this.handleCancel}
                     footer={(
                         <div>
-                        <Button className="tutorial-button ant-button" onClick={this.state.started ? () => this.handleChangePage(-1) : this.handleCancel}>
+                        <button className="tutorial-button tutorial-button-no" onClick={this.state.started ? () => this.handleChangePage(-1) : this.handleCancel}>
                         {this.state.started ? 'Previous' : 'No'}
-                        </Button>
-                            <Button className="tutorial-button ant-button" onClick={this.state.started ? this.handleChangePage : this.handleStartTutorial}>
-                            {this.state.started ? 'Next' : 'Yes'}
-                            </Button>
+                        </button>
+                            <button className="tutorial-button tutorial-button-yes" onClick={this.state.started ? this.handleChangePage : this.handleStartTutorial}>
+                            {this.state.started ? (
+                                <div>
+                                    Next
+                                    <Icon type="caret-right" />
+                                </div>
+                            ) : 'Yes'}
+                            </button>
                         </div>
                     )}
                     width="300px">
