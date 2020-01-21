@@ -26,30 +26,42 @@ const Buttons = (props) => (
         <button className="tab-writer-button" onClick={() => props.dispatch(goEnd())}>
             <img alt="Go to end" src={require('../styles/img/step-forwards.svg')} />
         </button>
+        <span>
+            <Tooltip title="Save" placement="bottom">
+                <button 
+                className="tab-writer-button" 
+                onClick={
+                    !!props.auth.uid ? // Is Logged In
+                    () => (
+                    document.getElementById('tabs-name').value !== '' ?
+                        props.dispatch(saveTabs(JSON.parse(JSON.stringify(props))))
+                        :
+                        message.error('Please enter a name for your song')
+                    )
+                    :
+                    () => message.error('You need to login in order to save tabs!')
+                }>
+                    <img alt="Save" src={require('../styles/img/save.svg')} />
+                </button>
+            </Tooltip>
 
-        {
-            !!props.auth.uid && (<span>
-                <Tooltip title="Save" placement="bottom">
-                    <button className="tab-writer-button" onClick={() => (
-                        document.getElementById('tabs-name').value !== '' ?
-                            props.dispatch(saveTabs(JSON.parse(JSON.stringify(props))))
-                            :
-                            message.error('Please enter a name for your song')
-                    )}>
-                        <img alt="Save" src={require('../styles/img/save.svg')} />
+            <LoadTabs>
+                <Tooltip title="Load Saved Tabs" placement="bottom">
+                    <button 
+                    className="tab-writer-button" 
+                    onClick={
+                        !!props.auth.uid ? 
+                        () => props.dispatch(startloadTabsNames(props.auth.uid))
+                        :
+                        () => message.error('You need to login in order to load save tabs!')
+                    }>
+                        <img alt="Load" src={require('../styles/img/load.svg')} />
                     </button>
                 </Tooltip>
+            </LoadTabs>
+        </span>
 
-                <LoadTabs>
-                    <Tooltip title="Load Saved Tabs" placement="bottom">
-                        <button className="tab-writer-button" onClick={() => props.dispatch(startloadTabsNames(props.auth.uid))}>
-                            <img alt="Load" src={require('../styles/img/load.svg')} />
-                        </button>
-                    </Tooltip>
-                </LoadTabs>
-            </span>
-            )
-        }
+
 
         <PasteTabs pasteTabs={pasteTabs} dispatch={props.dispatch}>
             <Tooltip title="Paste Tabs" placement="bottom">
@@ -91,10 +103,10 @@ const Buttons = (props) => (
         </Tutorial>
 
         <button className="tab-writer-button open-sidebar-button"
-        onClick={() => {
-            let display = document.querySelector('.tab-writer-sidebar-container').style.display
-            document.querySelector('.tab-writer-sidebar-container').style.display = display === 'initial' ? 'none' : 'initial'
-        }}>
+            onClick={() => {
+                let display = document.querySelector('.tab-writer-sidebar-container').style.display
+                document.querySelector('.tab-writer-sidebar-container').style.display = display === 'initial' ? 'none' : 'initial'
+            }}>
             <img alt="Open Sidebar" src={require('../styles/img/settings.svg')} />
         </button>
 

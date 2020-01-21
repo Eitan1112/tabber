@@ -28,7 +28,7 @@ class Load extends React.Component {
     render() {
         return (
             <span>
-                <span onClick={this.showModal}>
+                <span onClick={!!this.props.auth.uid && this.showModal}>
                     {this.props.children}
                 </span>
                 <Modal
