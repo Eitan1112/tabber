@@ -1,4 +1,3 @@
-import React from 'react'
 import { goRight, goLeft, goRowStart, goRowEnd, goStart, goEnd } from '../actions/coords'
 import { musicBreak, replaceChar, backspace, downline, middleSpace, reset } from '../actions/tabwriter'
 
