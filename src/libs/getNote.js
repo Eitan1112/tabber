@@ -1,5 +1,4 @@
 export default (fret, capo, { tune, octave }) => {
-    console.log(fret, capo, tune, octave)
     // Takes fret,  capo, tuning
     // returns note
     const order = ['E', 'F', 'Fm', 'G', 'Gm', 'A', 'Am', 'B', 'C', 'Cm', 'D', 'Dm']

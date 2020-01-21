@@ -12,9 +12,6 @@ class Register extends React.Component {
                 firebase.auth().createUserWithEmailAndPassword(values.email, values.password).then(() => {
                     message.success('Created account!')
                 }).catch((e) => {
-                    var errorCode = e.code;
-                    var errorMessage = e.message;
-                    console.log(errorCode, errorMessage)
                     message.error('Failed to create account')
                 });
             } else {

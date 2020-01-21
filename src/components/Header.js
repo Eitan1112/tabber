@@ -5,8 +5,6 @@ import { Menu } from 'antd'
 import logo from '../styles/img/logo.svg'
 import { startLogout } from '../actions/auth'
 
-console.log(logo)
-
 const Header = (props) => (
     <Menu mode="horizontal" className="menu">
         <Menu.Item key="home-menu-item">                 

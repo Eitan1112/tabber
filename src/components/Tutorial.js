@@ -1,8 +1,8 @@
 import React from 'react'
-import { Modal, Button, Icon } from 'antd'
+import { Modal, Icon } from 'antd'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import getPageInfo from '../libs/getTutorialPage'
+import getPageInfo, {pages} from '../libs/getTutorialPage'
 
 function getElementPropertyValue( element, property ) {
     return window.getComputedStyle(element, null).getPropertyValue(property)
@@ -56,7 +56,8 @@ class Keyboard extends React.Component {
             <div className="keyboard-wrapper">
                 <div className="keyboard-image">
                     <div className="keyboard-color">
-                        <div className="keyboard-highlight" id="keyboard-highlight"></div>
+                        <div className="keyboard-highlight" id="keyboard-highlight-1"></div>
+                        <div className="keyboard-highlight" id="keyboard-highlight-2"></div>
                     </div>
                 </div>
             </div>
@@ -67,48 +68,46 @@ class Keyboard extends React.Component {
 class Tutorial extends React.Component {
     constructor(props) {
         super(props);    
-        this.state = { visible: false, page: 0, started: false }
+        this.state = { visible: false, page: 0, playing: false }
     }
 
     showModal = () => {
         this.setState({
-            visible: true,
+            visible: true
         });
     };
 
     handleStartTutorial = () => {
-        ReactDOM.render((
-            <div>
-                <Keyboard />
-            </div>
-        ), document.getElementsByClassName('ant-modal-mask')[0])
-        this.setState({ started: true })
+        ReactDOM.render(<Keyboard />, document.getElementsByClassName('ant-modal-mask')[0])
+        this.setState({ playing: true })
         this.handleChangePage()
     };
 
-    componentWillUpdate() {
-        console.log(this.state)
-    }
-
     handleChangePage = (goBy = 1) => {
-        try {
-            const page = typeof goBy === 'number' ? this.state.page + goBy : this.state.page + 1
+        const page = typeof goBy === 'number' ? this.state.page + goBy : this.state.page + 1
+        if (page <= pages) {
             const { left, top, width, height, text, dispatch } = getPageInfo(page)
             this.setState({ page })
             document.getElementById('tutorial-text').innerHTML = text
-            const element = document.getElementById('keyboard-highlight')
+            const element = document.getElementById('keyboard-highlight-1')
             changeLocation(element, left, top)
             changeSize(element, width, height)
             dispatch.forEach((action, index) => {
-                setTimeout(() => this.props.dispatch(action()), index * 500)
+                setTimeout(() => this.props.dispatch(action()), index * 750)
             })
-        } catch { }
+        }
     }
 
+    firstPageText = 'Do you want to watch the tutorial?'
+
     handleCancel = e => {
+        document.getElementById('tutorial-text').innerHTML = this.firstPageText
         this.setState({
             visible: false,
-        });
+            page: 0,
+            playing: false
+        },)
+        document.getElementsByClassName('ant-modal-mask')[0].innerHTML = ''
     };
 
 
@@ -123,24 +122,41 @@ class Tutorial extends React.Component {
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     footer={(
-                        <div>
-                        <button className="tutorial-button tutorial-button-no" onClick={this.state.started ? () => this.handleChangePage(-1) : this.handleCancel}>
-                        {this.state.started ? 'Previous' : 'No'}
+                        <div className="tutorial-container">
+                        <button 
+                        className="tutorial-button tutorial-button-no" 
+                        onClick={this.state.playing ? () => this.handleChangePage(-1) : this.handleCancel}>
+                        {
+                            this.state.playing ?                                
+                            <Icon type="caret-left" />
+                            : 
+                            'No'
+                        }
                         </button>
-                            <button className="tutorial-button tutorial-button-yes" onClick={this.state.started ? this.handleChangePage : this.handleStartTutorial}>
-                            {this.state.started ? (
-                                <div>
-                                    Next
-                                    <Icon type="caret-right" />
-                                </div>
-                            ) : 'Yes'}
-                            </button>
+                        <button 
+                        className="tutorial-button tutorial-button-yes" 
+                        onClick={
+                            this.state.playing ?
+                                this.state.page === pages ?
+                                this.handleCancel
+                                :
+                                this.handleChangePage 
+                            : 
+                            this.handleStartTutorial
+                        }>
+                        {
+                            this.state.playing ?
+                            <Icon type="caret-right" />
+                            : 
+                            'Yes'
+                        }
+                        </button>
                         </div>
                     )}
                     width="300px">
                     <div>
                         <span id="tutorial-text">
-                            Do you want to watch the tutorial?                        
+                            {this.firstPageText}
                         </span>                           
                     </div>
                 </Modal>

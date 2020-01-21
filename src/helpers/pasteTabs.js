@@ -42,7 +42,6 @@ const newPaste = (state, rowIndex, paste, pasteType) => {
     case 'APPEND':
       return [...state, ...newState]
     case 'AT_SELECTOR':
-      console.log(state)
       return state.slice(0, rowIndex + 1).concat(newState, state.slice(rowIndex + 1, state.length))
     default:
       return state

@@ -46,10 +46,7 @@ const Row = (props) => (
                     lineIndex={i}
                     key={String(props.rowIndex) + String(i)} />
             })
-        }
-        {
-            console.log(props)
-        }       
+        }      
         {
             props.visible_lyrics &&
             <input 

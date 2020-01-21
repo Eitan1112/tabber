@@ -1,4 +1,3 @@
-import React from 'react'
 import { goRight } from '../actions/coords' 
 import { musicBreak, replaceChar, backspace, downline } from '../actions/tabwriter'
 
@@ -55,9 +54,11 @@ export default (page) => {
                     top: 0,
                     width: 0,
                     height: 0,
-                    text: 'You finished the tutorial!<br />Do you want to sign up in order to save your songs?',
+                    text: 'You finished the tutorial!',
                     dispatch: []
                 }
 
         }
     }
+
+export const pages = 6
