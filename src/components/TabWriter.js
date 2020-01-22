@@ -7,6 +7,7 @@ import Dictionary from './Dictionary'
 import listenKeystrokes from '../utils/listenKeystrokes'
 import Header from './Header'
 import Sidebar from './Sidebar'
+import { message } from 'antd'
 
 const TabWriter = (props) => (
     <div 
@@ -20,7 +21,7 @@ const TabWriter = (props) => (
             className="tab-writer-rows-container" 
             id="tab-writer-rows-container"
             
-            onKeyDown={(e) => { listenKeystrokes(e, props) }}>        
+            onKeyDown={props.player.playing ? () => { message.warning("You can't edit while playing")} : (e) => { listenKeystrokes(e, props) }}>        
             {
                 props.rows.map((row, index) => (
                     <TabWriterRow 

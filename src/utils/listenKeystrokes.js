@@ -3,9 +3,6 @@ import { replaceChar, downline, middleSpace, musicBreak, splittedDownline, backs
 
 export default (e, store) => {
     const validChars = '0123456789\\/hpr~xtv-'
-    if (document.activeElement.id !== 'tab-writer-rows-container') {
-        return
-    }
     if (e.key === 'ArrowRight') {
         e.preventDefault()
         return store.dispatch(goRight())   
