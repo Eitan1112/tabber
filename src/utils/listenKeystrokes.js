@@ -16,8 +16,7 @@ export default (e, store) => {
         e.preventDefault()
         return store.dispatch(goDown())                
     } else if (validChars.includes(e.key)) {
-        store.dispatch(replaceChar(e.key))
-        return store.dispatch(goRight())
+        return store.dispatch(replaceChar(e.key))
     } else if (e.key === 'Enter' && e.shiftKey) {
         return store.dispatch(downline())
     } else if (e.key === 'Enter' && !e.shiftKey) {
